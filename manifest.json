@@ -1,0 +1,9 @@
+{
+  "short_name": "Leezuu",
+  "name": "Leezuu Private Space",
+  "icons": [],
+  "start_url": "./index.html",
+  "background_color": "#0d0d1a",
+  "theme_color": "#0d0d1a",
+  "display": "standalone"
+}
