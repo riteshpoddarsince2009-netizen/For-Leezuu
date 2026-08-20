@@ -1,0 +1,125 @@
+.greet-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(5, 5, 15, 0.75);
+  backdrop-filter: blur(25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.greet-modal-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.close-greet-btn {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.greet-glass-card {
+  background: rgba(20, 20, 35, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  padding: 28px;
+  color: #fff;
+  font-family: 'SF Pro Display', -apple-system, sans-serif;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.greet-glass-card.slide-up { animation: cardSlideUp 0.5s ease; }
+.greet-glass-card.zoom { animation: cardZoom 0.5s ease; }
+
+@keyframes cardSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes cardZoom {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.greet-progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.greet-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #00f2fe;
+  transition: width 0.3s ease;
+}
+
+.greet-theme-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.greet-card-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.greet-card-body {
+  min-height: 100px;
+  margin: 20px 0;
+}
+
+.greet-typewriter {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.greet-card-footer {
+  display: flex;
+  gap: 12px;
+}
+
+.greet-nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.greet-primary-btn {
+  flex: 1;
+  height: 48px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  color: #000;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
