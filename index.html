@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Leezuu 🌸</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d0d1a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="loader/loader.css">
+  <link rel="stylesheet" href="welcome/welcome.css">
+  <link rel="stylesheet" href="home/home.css">
+  <link rel="stylesheet" href="greet/greet.css">
+  <link rel="stylesheet" href="chat/chat.css">
+  <link rel="stylesheet" href="chat/typing.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+
+  <!-- Background Canvas Effects -->
+  <canvas id="auroraCanvas"></canvas>
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Modular View Containers -->
+  <div id="loader-container"></div>
+  <div id="welcome-container" class="hidden"></div>
+  <div id="home-container" class="hidden"></div>
+  <div id="greet-modal-container" class="hidden"></div>
+  <div id="chat-container" class="hidden"></div>
+
+  <!-- Main Orchestrator -->
+  <script type="module">
+    import { initAurora } from './effects/aurora.js';
+    import { initParticles } from './effects/particles.js';
+    import { loadModule } from './effects/loader-helper.js';
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      // 1. Start background canvases
+      initAurora('auroraCanvas');
+      initParticles('particleCanvas');
+
+      // 2. Load module HTML into placeholders
+      await loadModule('loader/loader.html', 'loader-container');
+      await loadModule('welcome/welcome.html', 'welcome-container');
+      await loadModule('home/home.html', 'home-container');
+      await loadModule('greet/greet.html', 'greet-modal-container');
+      await loadModule('chat/chat.html', 'chat-container');
+
+      // 3. Trigger PS5 Boot Sequence
+      const { runBootSequence } = await import('./loader/loader.js');
+      runBootSequence();
+    });
+  </script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker registered:', reg.scope))
+          .catch(err => console.error('Service Worker registration error:', err));
+      });
+    }
+  </script>
+</body>
+</html>
